@@ -1,5 +1,5 @@
-# VDIR
-# Variational Deep Image Restoration & <p> [Variational Deep Image Denoising](https://arxiv.org/pdf/2104.00965.pdf)
+# DFGNet
+# DISENTANGLED FEATURE-GUIDED MULTI-EXPOSURE HIGH DYNAMIC RANGE IMAGING (https://arxiv.org/pdf/2104.00965.pdf)
 
 Jae Woong Soh and Nam Ik Cho
 
@@ -7,13 +7,14 @@ VDID [[Arxiv](https://arxiv.org/abs/2104.00965)]
 
 ## Environments
 - Ubuntu 18.04
-- [Tensorflow](http://www.tensorflow.org/) (>=1.8)
-- CUDA 11.2 & cuDNN
-- Python 3.7
+- Pytorch 1.10.1
+- CUDA 10.2
+- CuDNN 7.6.5
+- Python 3.8.3
 
-## Abstract (VDID)
+## Abstract (DFGNet)
 
-Convolutional neural networks (CNNs) have shown outstanding performance on image denoising with the help of large-scale datasets. Earlier methods naively trained a single CNN with many pairs of clean-noisy images. However, the conditional distribution of the clean image given a noisy one is too complicated and diverse, so that a single CNN cannot well learn such distributions. Therefore, there have also been some methods that exploit additional noise level parameters or train a separate CNN for a specific noise level parameter. These methods separate the original problem into easier sub-problems and thus have shown improved performance than the naively trained CNN. In this step, we raise two questions. The first one is whether it is an optimal approach to relate the conditional distribution only to noise level parameters. The second is what if we do not have noise level information, such as in a real-world scenario. To answer the questions and provide a better solution, we propose a novel Bayesian framework based on the variational approximation of objective functions. This enables us to separate the complicated target distribution into simpler sub-distributions. Eventually, the denoising CNN can conquer noise from each sub-distribution, which is generally an easier problem than the original. Experiments show that the proposed method provides remarkable performance on additive white Gaussian noise (AWGN) and real-noise denoising while requiring fewer parameters than recent state-of-the-art denoisers.
+Multi-exposure high dynamic range (HDR) imaging aims to generate an HDR image from multiple differently exposed low dynamic range (LDR) images. It is a challenging task due to two major problems: (1) there are usually misalignments among the input LDR images, and (2) LDR images often have incomplete information due to under-/over-exposure. In this paper, we propose a disentangled feature-guided HDR network (DFGNet) to alleviate the above-stated problems. Specifically, we first extract and disentangle exposure features and spatial features of input LDR images. Then, we process these features through the proposed DFG modules, which produce a high-quality HDR image. Experiments show that the proposed DFGNet achieves outstanding performance on a benchmark dataset.
 <br><br>
 
 ## Brief Description of Our Proposed Method
