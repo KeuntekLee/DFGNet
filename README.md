@@ -53,9 +53,7 @@ cd VDIR/
 
 ### Training
 
-Download training dataset [DIV2K](https://data.vision.ee.ethz.ch/cvl/DIV2K/).
-
-Download training dataset [SIDD](https://www.eecs.yorku.ca/~kamel/sidd/).
+Download Kalantari dataset [Kalantari](https://cseweb.ucsd.edu/~viscomp/projects/SIG17HDR/).
 
 ### Generate TFRecord dataset
 
