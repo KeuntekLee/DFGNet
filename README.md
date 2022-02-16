@@ -1,7 +1,7 @@
 # DFGNet
 # DISENTANGLED FEATURE-GUIDED MULTI-EXPOSURE HIGH DYNAMIC RANGE IMAGING (https://arxiv.org/pdf/2104.00965.pdf)
 
-Jae Woong Soh and Nam Ik Cho
+Keuntek Lee, Yeong Il Jang and Nam Ik Cho
 
 VDID [[Arxiv](https://arxiv.org/abs/2104.00965)]
 
