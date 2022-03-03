@@ -2,7 +2,7 @@ import torch
 import numpy as np
 from torch.utils.data import Dataset
 import os
-from utils.utils_tf import *
+from utils.utils import *
 import cv2
 
 
