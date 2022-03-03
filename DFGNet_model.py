@@ -148,24 +148,24 @@ class DFGNet(nn.Module):
         out2_3 = self.prelu3_2(out2_3)
         out3_3 = self.prelu3_3(out3_3)
         
-        sk_3 = self.eau3([out1_3, out2_3, out3_3],lumi_feats) + out2_3
-        sp_3 = self.eau3([out1_3, out2_3, out3_3],spatial_feats_3) + out2_3
-        fuse_3 = torch.cat([sk_3, sp_3], dim=1)
+        ea_3 = self.eau3([out1_3, out2_3, out3_3],lumi_feats) + out2_3
+        sp_3 = self.sau3([out1_3, out2_3, out3_3],spatial_feats_3) + out2_3
+        fuse_3 = torch.cat([ea_3, sp_3], dim=1)
         fuse_3 = self.tconv1(fuse_3)
 
         fuse_3 = self.fuse_3_prelu(fuse_3)
 
-        sk_2 = self.sau2([out1_2, out2_2, out3_2],lumi_feats) + out2_2
+        ea_2 = self.eau2([out1_2, out2_2, out3_2],lumi_feats) + out2_2
         sp_2 = self.sau2([out1_2, out2_2, out3_2],spatial_feats_2) + out2_2
-        fuse_2 = torch.cat([sk_2, sp_2], dim=1)
+        fuse_2 = torch.cat([ea_2, sp_2], dim=1)
         fuse_2 = torch.cat([fuse_2,fuse_3],dim=1)
         fuse_2 = self.tconv2(fuse_2)
 
         fuse_2 = self.fuse_2_prelu(fuse_2)
 
-        sk_1 = self.eau1([out1_1, out2_1, out3_1],lumi_feats) + out2_1
+        ea_1 = self.eau1([out1_1, out2_1, out3_1],lumi_feats) + out2_1
         sp_1 = self.sau1([out1_1, out2_1, out3_1],spatial_feats_1) + out2_1
-        fuse_1 = torch.cat([sk_1, sp_1], dim=1)
+        fuse_1 = torch.cat([ea_1, sp_1], dim=1)
         fuse_1 = torch.cat([fuse_2, fuse_1], dim=1)
 
         out = self.conv_tail(fuse_1)
