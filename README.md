@@ -30,7 +30,7 @@ Multi-exposure high dynamic range (HDR) imaging aims to generate an HDR image fr
 ## Experimental Results
 
 
-<p align="center"><img src="figures/visual_result.PNG" width="900"></p>
+<p align="center"><img src="figures/visual_result.PNG" width="700"></p>
 
 
 
