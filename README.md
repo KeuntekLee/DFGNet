@@ -21,11 +21,11 @@ Multi-exposure high dynamic range (HDR) imaging aims to generate an HDR image fr
 
 ### <u>Disentangle Network Architecture</u>
 
-<p align="center"><img src="figures/disentanglenet.png" width="700"></p>
+<p align="center"><img src="figures/disentanglenet.PNG" width="700"></p>
 
 ### <u>DFG Network Architecture</u>
 
-<p align="center"><img src="figures/DFGNet.png" width="700"></p>
+<p align="center"><img src="figures/DFGNet.PNG" width="700"></p>
 
 ## Experimental Results
 
