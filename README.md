@@ -3,8 +3,6 @@
 
 Keuntek Lee, Yeong Il Jang and Nam Ik Cho
 
-VDID [[Arxiv](https://arxiv.org/abs/2104.00965)]
-
 ## Environments
 - Ubuntu 18.04
 - Pytorch 1.10.1
@@ -16,8 +14,6 @@ VDID [[Arxiv](https://arxiv.org/abs/2104.00965)]
 
 Multi-exposure high dynamic range (HDR) imaging aims to generate an HDR image from multiple differently exposed low dynamic range (LDR) images. It is a challenging task due to two major problems: (1) there are usually misalignments among the input LDR images, and (2) LDR images often have incomplete information due to under-/over-exposure. In this paper, we propose a disentangled feature-guided HDR network (DFGNet) to alleviate the above-stated problems. Specifically, we first extract and disentangle exposure features and spatial features of input LDR images. Then, we process these features through the proposed DFG modules, which produce a high-quality HDR image. Experiments show that the proposed DFGNet achieves outstanding performance on a benchmark dataset.
 <br><br>
-
-## Brief Description of Our Proposed Method
 
 ### <u>Disentangle Network Architecture</u>
 
