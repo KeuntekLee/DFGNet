@@ -35,69 +35,6 @@ The overall architecture of proposed VDID, where <i><b>k</b></i>, <b><i>s</i></b
 
 <p align="center"><img src="figure/result_REAL.png" width="900"></p>
 
-## Additional Visualized Results
-
-<p align="center"><img src="figure/Denoising.png" width="900"></p>
-<p align="center"><img src="figure/JPEG_AR.png" width="900"></p>
-<p align="center"><img src="figure/Blind_SR.png" width="900"></p>
-
-## Guidelines for Codes
-
-**Requisites should be installed beforehand.**
-
-Clone this repo.
-```
-git clone http://github.com/JWSoh/VDIR.git
-cd VDIR/
-```
-
-### Training
-
-Download Kalantari dataset [Kalantari](https://cseweb.ucsd.edu/~viscomp/projects/SIG17HDR/).
-
-### Generate TFRecord dataset
-
-**AWGN Denoising Dataset**
-
-- Run generate_AWGN.py with proper clean image path.
-```
-python generate_AWGN.py --labelpath DIV2K_train_HR/*.png
-```
-
-**Real-Noise Denoising Dataset**
-
-- Refer to the codes of [CBDNet](https://github.com/GuoShi28/CBDNet) to synthesize real-noise to DIV2K dataset.
-
-	---> Use MATLAB code 'utils/AddNoiseMosai.m'
-
-- Run generate_REAL.py with proper paths.
-```
-python generate_REAL.py --labelpath DIV2K_train_HR/*.png --datapath DIV2K_train_REAL_NOISE/*.png --labelpath2 SIDD/GT/*.PNG --datapath2 SIDD/NOISY/*.PNG
-```
-
-### Train VDID
-
-**AWGN Denoising**
-
-- Run train_AWGN.py.
-
-[Options]
-```
-python train_AWGN.py --gpu [GPU_number] --trial [Trial of your training] --step [Global step]
-
---gpu: If you have more than one gpu in your computer, the number denotes the index. [Default 0]
---trial: Trial number. Any integer numbers can be used. [Default 0]
---step: Global step. When you resume the training, you need to specify the right global step. [Default 0]
-```
-
-**Real-Noise Denoising**
-
-- Run train_REAL.py.
-
-```
-python train_REAL.py --gpu [GPU_number] --trial [Trial of your training] --step [Global step]
-```
-
 
 ### Test
 
