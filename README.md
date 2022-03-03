@@ -29,13 +29,9 @@ Multi-exposure high dynamic range (HDR) imaging aims to generate an HDR image fr
 
 ## Experimental Results
 
-**Results on Additive White Gaussian Noise (AWGN)**
 
-<p align="center"><img src="figure/result_AWGN.png" width="900"></p>
+<p align="center"><img src="figures/visual_result.PNG" width="900"></p>
 
-**Results on Real-Noise (SIDD/DND)**
-
-<p align="center"><img src="figure/result_REAL.png" width="900"></p>
 
 
 ### Test
