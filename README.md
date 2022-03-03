@@ -19,11 +19,13 @@ Multi-exposure high dynamic range (HDR) imaging aims to generate an HDR image fr
 
 ## Brief Description of Our Proposed Method
 
-### <u>Overall Network Architecture</u>
+### <u>Disentangle Network Architecture</u>
 
-<p align="center"><img src="figure/Overall.png" width="700"></p>
+<p align="center"><img src="figures/disentanglenet.png" width="700"></p>
 
-The overall architecture of proposed VDID, where <i><b>k</b></i>, <b><i>s</i></b>, and <i><b>n</i></b> denote kernel size, stride, and the number of filters.
+### <u>DFG Network Architecture</u>
+
+<p align="center"><img src="figures/DFGNet.png" width="700"></p>
 
 ## Experimental Results
 
