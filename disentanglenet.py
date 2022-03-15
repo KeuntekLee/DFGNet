@@ -98,7 +98,7 @@ class Spatial_Encoder(nn.Module):
     def __init__(self, nFeat):
         super(Spatial_Encoder, self).__init__()
         self.nFeat = nFeat
-        self.outdim = outdim
+        #self.outdim = outdim
         self.refpad_3 = nn.ReflectionPad2d(3)
         self.refpad_1 = nn.ReflectionPad2d(1)
         self.headconv = nn.Conv2d(3, nFeat, kernel_size=7)
