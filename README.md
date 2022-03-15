@@ -31,7 +31,8 @@ Multi-exposure high dynamic range (HDR) imaging aims to generate an HDR image fr
 
 
 ### Test
-
+#### Pre-trained Weights
+[[Drive](https://drive.google.com/drive/folders/0ABwxd2RMvZ88Uk9PVA)]
 [Options]
 ```
 python main.py --gpu [GPU_number] --model [Type of model] --inputpath [dataset path] --dataset [dataset name] --sigma [noise level]  --noisy
