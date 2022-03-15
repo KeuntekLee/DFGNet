@@ -1,6 +1,5 @@
-
 import os
-os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+os.environ["CUDA_VISIBLE_DEVICES"] = "1"
 #import tensorflow.compat.v1 as tf
 #import tensorflow as tf
 import math
@@ -14,25 +13,19 @@ from torch.utils.data import DataLoader
 from dataset.dataset import Dynamic_Scenes_Dataset
 from DFGNet_model import DFGNet
 from utils.utils import *
-from disentanglenet import Exposure_Encoder, Spaital_Encoder
+from disentanglenet import Exposure_Encoder, Spatial_Encoder
 
 data_root = '/data1/keuntek/HDR_KALANTRI'
 
 test_dataset = Dynamic_Scenes_Dataset(root_dir=data_root, is_training=False, transform=None, crop=False)
-test_loader = DataLoader(val_dataset, batch_size=1, shuffle=False, num_workers=1, pin_memory=True)
+test_loader = DataLoader(test_dataset, batch_size=1, shuffle=False, num_workers=1, pin_memory=True)
 ee = Exposure_Encoder(nFeat=64,outdim=1024)
-es = Spaital_Encoder(nFeat=64)
-#ee.load_state_dict(torch.load("./models/ee_35000.pth"))
-#es.load_state_dict(torch.load("./models/es_35000.pth"))
-model.load_state_dict(torch.load("./models/DFGNet.pth"))
-ee.load_state_dict(torch.load("./models/ee.pth"))
-es.load_state_dict(torch.load("./models/es.pth"))
-#model = HDR_UNET_DEFC(6, 5, 64, 32).cuda()
-model = DFGNet(6, 64)
-'''
-model = torch.nn.DataParallel(model)
-ee = torch.nn.DataParallel(ee)
-'''
+es = Spatial_Encoder(nFeat=64)
+model = DFGNet(6, 5, 64)
+model.load_state_dict(torch.load("./DFGNet.pth"))
+ee.load_state_dict(torch.load("./exposure_encoder.pth"))
+es.load_state_dict(torch.load("./spatial_encoder.pth"))
+
 model.cuda()
 ee.cuda()
 es.cuda()
@@ -49,9 +42,9 @@ def get_activation(name):
     def hook(model, input, output):
         activation[name] = output.detach()
     return hook
-es.Inconv.register_forward_hook(get_activation('feat_64'))
-es.model[0].register_forward_hook(get_activation('feat_128'))
-es.model[1].register_forward_hook(get_activation('feat_256'))
+es.headconv.register_forward_hook(get_activation('feat_64'))
+es.conv1.register_forward_hook(get_activation('feat_128'))
+es.conv2.register_forward_hook(get_activation('feat_256'))
 
 requires_grad(ee, False)
 requires_grad(es, False)
@@ -61,7 +54,7 @@ requires_grad(model, False)
     
 total_psnr=0.
 
-for i in val_loader:
+for i in test_loader:
     #print(i['input0'].shape)
     ldr1 = i['input0'].cuda()
     ldr2 = i['input1'].cuda()
@@ -115,14 +108,9 @@ for i in val_loader:
     #pred = torch.clamp(pred, 0., 1.)
     #gt = (gt+1)/2.
     gt = range_compressor_tensor(gt)
-    #loss = criterion(pred, gt)
 
-    #psnr = batch_PSNR(gt, pred, 1.0)
     mse = torch.mean((gt-pred)**2)
     psnr = -10.*math.log10(mse)
     total_psnr+=psnr
     #print(psnr)
-if total_psnr/len(val_loader) > best_psnr:
-    best_psnr = total_psnr/len(val_loader)
-print("Test PSNR: ",total_psnr/len(val_loader))
-
+print("Test PSNR: ",total_psnr/len(test_loader))
