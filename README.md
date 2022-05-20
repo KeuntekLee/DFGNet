@@ -35,25 +35,17 @@ Multi-exposure high dynamic range (HDR) imaging aims to generate an HDR image fr
 [[Drive](https://drive.google.com/drive/folders/0ABwxd2RMvZ88Uk9PVA)]
 [Options]
 ```
-python main.py --gpu [GPU_number] --model [Type of model] --inputpath [dataset path] --dataset [dataset name] --sigma [noise level]  --noisy
-
---gpu: If you have more than one gpu in your computer, the number designates the index of GPU which is going to be used. [Default 0]
---model: Type of pretrained model for the test. Choices: ['model-AWGN', 'model-Real_Noise']. [Default: 'model-AWGN']
---inputpath: Path of input images [Default: dataset]
---dataset: Name of the dataset [Default: Kodak24]
---sigma: Noise level (Effective only for AWGN) [Default: 10]
-
---noisy: A flag whether input images are clean images or noisy images.
-	-> input as a clean image to synthesize a noisy image which will be fed to the network.
-	-> input as a noisy image directly fed to the network.
+python test.py
 ```
 
 ## Citation
 ```
-@article{soh2021variational,
-  title={Variational Deep Image Denoising},
-  author={Soh, Jae Woong and Cho, Nam Ik},
-  journal={arXiv preprint arXiv:2104.00965},
-  year={2021}
+@inproceedings{lee2022disentangled,
+  title={Disentangled Feature-Guided Multi-Exposure High Dynamic Range Imaging},
+  author={Lee, Keuntek and Jang, Yeong Il and Cho, Nam Ik},
+  booktitle={ICASSP 2022-2022 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)},
+  pages={2465--2469},
+  year={2022},
+  organization={IEEE}
 }
 ```
